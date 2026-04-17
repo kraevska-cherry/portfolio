@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Аліна Краєвська — Портфоліо дизайнера</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style1.CSS" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-left">
+        <input type="search" placeholder="Пошук..." />
+        <a href="index.html" class="logo-link">
+          <img src="logo_gold.png" alt="Логотип" class="logo-img" />
+        </a>
+      </div>
+
+      <ul class="nav-menu">
+        <li><a href="index.html">Головна</a></li>
+        <li><a href="#about">Про мене</a></li>
+        <li><a href="#works">Роботи</a></li>
+        <li><a href="#contacts">Контакти</a></li>
+      </ul>
+    </nav>
+
+    <header class="header">
+      <div class="header-text">
+        <h1>
+          Аліна <br />
+          Краєвська
+        </h1>
+        <p class="slogan">професійний дизайнер та художник</p>
+        <a href="#works" class="btn">мої роботи —</a>
+      </div>
+      <div class="header-img skills-hover-container">
+        <img src="1myphoto.jpg" alt="Аліна Краєвська" />
+
+        <div class="skills-tooltip">
+          <h4>Базово володію:</h4>
+          <ul>
+            <li>3D Max</li>
+            <li>AutoCAD</li>
+            <li>Corel</li>
+            <li>HTML</li>
+            <li>CSS</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <section class="about" id="about">
+      <div class="curved-text-container">
+        <svg viewBox="0 0 500 200">
+          <path id="curve" d="M50,150 Q250,50 450,150" fill="transparent" />
+          <text>
+            <textPath
+              xlink:href="#curve"
+              startOffset="50%"
+              text-anchor="middle"
+            >
+              САЙТ МОЛОДОЇ ДИЗАЙНЕРКИ
+            </textPath>
+          </text>
+        </svg>
+      </div>
+
+      <hr class="h" />
+
+      <div class="about-content">
+        <p>
+          Я — дизайнерка, яка вірить, що простір має бути не лише естетичним, а
+          й функціональним. Моя база — освіта в коледжі "Сервер", де я опанувала
+          мистецтво композиції та сучасні технології проєктування. У кожен
+          проєкт я вкладаю індивідуальний підхід, поєднуючи академічні знання з
+          актуальними тенденціями, щоб створювати дизайн, який має душу.
+        </p>
+      </div>
+    </section>
+
+    <section class="works" id="works">
+      <h2 class="main-title">Мої роботи</h2>
+      <hr class="h" />
+
+      <div class="cards">
+        <a href="3DMAX.html" class="card c2">
+          <img src="oblojka/3dMax.jpg" alt="3D Max моделювання" />
+          <div class="card-text">
+            <h3>3D Max</h3>
+            <p>Тривимірне моделювання</p>
+          </div>
+        </a>
+
+        <a href="AUTOCad.html" class="card c3">
+          <img src="oblojka/autoCAD.jpg" alt="Креслення AutoCAD" />
+          <div class="card-text">
+            <h3>AutoCAD</h3>
+            <p>Креслення та проєктування</p>
+          </div>
+        </a>
+
+        <a href="art.html" class="card c4">
+          <img src="oblojka/art.jpg" alt="Рисунок" />
+          <div class="card-text">
+            <h3>Рисунок</h3>
+            <p>Основи академічного рисунку</p>
+          </div>
+        </a>
+
+        <a href="drawing.html" class="card c5">
+          <img src="oblojka/drawing.jpg" alt="Художня робота" />
+          <div class="card-text">
+            <h3>Живопис</h3>
+            <p>Основи академічного живопису</p>
+          </div>
+        </a>
+
+        <a href="composition.html" class="card c6">
+          <img src="oblojka/composition.jpg" alt="Композиція" />
+          <div class="card-text">
+            <h3>Композиція</h3>
+            <p>Основи візуальної гармонії</p>
+          </div>
+        </a>
+
+        <a href="layoyt.html" class="card c8">
+          <img src="oblojka/mywork.jpg" alt="Авторські роботи" />
+          <div class="card-text">
+            <h3>Авторські роботи</h3>
+            <p>Особисті творчі проєкти</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="projects">
+      <h2>Моя дипломна робота</h2>
+      <hr class="h" />
+
+      <div class="cards diplom-section">
+        <div class="card diplom-text-card">
+          <h3>Дитячий садок «Sole d’Oro»</h3>
+          <p>
+            Концепція базується на синтезі еко-стилю та біоніки. Метою роботи є
+            створення безпечного та естетично привабливого простору з панорамним
+            склінням та авторськими елементами дизайну.
+          </p>
+        </div>
+        <div class="card c4 diplom-img-card">
+          <img src="diplom.jpg" alt="Фасад дипломна" />
+        </div>
+      </div>
+
+      <div class="container" style="text-align: center; margin-top: 40px">
+        <a href="diplom_detail.html" class="btn2">
+          <span>Переглянути проект</span>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer" id="contacts">
+      <p>Контакти: design@email.com | +38 (000) 123-45-67</p>
+      <p>Автор сайту: Краєвська Аліна</p>
+      <br />
+      <a href="index.html" class="btn-back">нагору ↑</a>
+    </footer>
+  </body>
+</html>

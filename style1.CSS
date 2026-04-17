@@ -1,0 +1,656 @@
+/* 1. ОСНОВНІ НАЛАШТУВАННЯ ТА ШРИФТИ */
+:root {
+  --accent-pink: #ffc1d6;
+  --soft-bg: #e4cfcf;
+  --text-main: #4a4a4a; /* М'який темний колір для тексту */
+  --white: #ffffff;
+  --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.6;
+  color: var(--text-main);
+  background-color: var(--soft-bg);
+  overflow-x: hidden;
+}
+
+/* 2. НАВІГАЦІЯ  */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px); /* Розмиття фону */
+  box-shadow: 0 2px 20px rgba(255, 193, 214, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 193, 214, 0.2);
+}
+
+.nav-left input {
+  padding: 10px 20px;
+  border: 1px solid #ffe4ed;
+  border-radius: 30px;
+  outline: none;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.nav-left input:focus {
+  border-color: var(--accent-pink);
+  box-shadow: 0 0 10px rgba(255, 193, 214, 0.3);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  color: var(--text-main);
+  margin-left: 30px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-transform: lowercase;
+  transition: var(--transition);
+}
+
+.nav-menu li a:hover {
+  color: var(--accent-pink);
+}
+
+/* 3. ГУЧНИЙ HEADER (Заголовки та Фото)*/
+.header {
+  display: flex;
+  align-items: center;
+  padding: 60px 8%;
+  background: linear-gradient(135deg, #ffffff 0%, #fff0f5 50%, #ffe4ed 100%);
+  min-height: auto;
+}
+
+.header-text h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 4rem;
+  color: #333;
+  line-height: 0.9;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.header-text .slogan {
+  font-size: 1.2rem;
+  color: #888;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  margin-bottom: 30px;
+}
+
+.header-img img {
+  max-width: 400px;
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 70%; /* Органічна м'яка форма */
+  border: 10px solid white;
+  box-shadow: 0 20px 50px rgba(255, 193, 214, 0.3);
+  transition: var(--transition);
+}
+
+.header-img img:hover {
+  border-radius: 50%;
+  transform: rotate(2deg);
+}
+
+/* ЕФЕКТ ПРИ НАВЕДЕННІ НА ФОТО (Спливаючі навички) */
+
+/* 1. Робимо контейнер фотографії головним для позиціонування */
+.skills-hover-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* 2. Стилізуємо саме фото, щоб воно не втратило закруглення */
+.skills-hover-container img {
+  max-width: 350px;
+  height: auto;
+  border-radius: 20%; /*існуюче закруглення */
+  border: 7px solid #eee;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* Плавний рух фото */
+}
+
+/* 3. Стилізуємо блок з навичками (Tooltip) */
+.skills-tooltip {
+  /* Позиціонування: праворуч від фото */
+  position: absolute;
+  top: 50%; /* Центруємо по вертикалі */
+  left: 105%; /* Трохи праворуч від краю фото */
+  transform: translateY(-50%) translateX(20px); /* Зміщуємо для ефекту випливання */
+
+  /* Зовнішній вигляд (естетика як на референсах) */
+  width: 200px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px); /* Ефект скла */
+  border: 1px solid rgba(255, 193, 214, 0.3); /* Ніжно-рожева рамка */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(255, 193, 214, 0.2);
+  text-align: left;
+
+  /* Стан за замовчуванням: прихований */
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    visibility 0.4s;
+  z-index: 10;
+}
+
+/* 4. Налаштування тексту всередині Tooltip */
+.skills-tooltip h4 {
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 10px;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+.skills-tooltip ul {
+  list-style: none; /* Прибираємо стандартні маркери */
+  padding: 0;
+  margin: 0;
+}
+
+.skills-tooltip ul li {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 20px;
+}
+
+/*  маленькі рожеві крапки перед кожним словом */
+.skills-tooltip ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #ffc1d6;
+  font-size: 1.2rem;
+}
+
+/* 5. Показуємо текст при наведенні */
+.skills-hover-container:hover .skills-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0px); /* Повертаємо на місце */
+}
+
+/*  повертається фото при наведенні  */
+.skills-hover-container:hover img {
+  transform: scale(1.02) rotate(2deg);
+}
+
+/* 4. СЕКЦІЯ ПРО МЕНЕ (Вигнутий текст)*/
+.about {
+  padding: 15px 5% 40px;
+  background: rgba(249, 247, 233, 0.946);
+  text-align: center;
+}
+
+text {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  fill: palevioletred;
+  letter-spacing: 3px;
+  text-transform: lowercase;
+}
+
+.h {
+  width: 65px; /* Коротка лінія */
+  height: 2px;
+  background: var(--accent-pink);
+  border: none;
+  margin: 30px auto;
+}
+
+.about p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.curved-text-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 10px auto 0; /* Мінімальний відступ від попереднього блоку */
+  padding: 0; /* Прибрати внутрішні відступи */
+  line-height: 0; /* Прибирати міжрядкову порожнечу */
+}
+
+svg {
+  display: block;
+  margin: 0 auto;
+}
+
+/* 5. ГАЛЕРЕЯ РОБІТ (Картки) */
+.works {
+  padding: 100px 5%;
+}
+
+.main-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.cards {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 30px !important;
+  width: 100% !important;
+  max-width: 1200px; /*  для кращого вигляду на великих екранах */
+  margin: 0 auto;
+  padding: 50px 0 !important;
+}
+
+.card {
+  flex: none !important;
+  width: 100% !important; /* Картка займає всю ширину своєї колонки grid */
+  min-width: 0 !important;
+  background: white;
+  text-decoration: none;
+  border-radius: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  border: 1px solid rgba(255, 193, 214, 0.2);
+}
+
+/*  якщо екран менше 900px, робимо 2 в ряд, якщо менше 600px — 1 в ряд */
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .cards {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 25px;
+  margin-bottom: 20px;
+  transition: 0.5s;
+}
+
+.card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #999;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(255, 193, 214, 0.2);
+  border-color: var(--accent-pink);
+}
+
+/* Пастельні фони для карток */
+.c1 {
+  background: linear-gradient(180deg, #ffffff, #fff0f5);
+}
+.c2 {
+  background: linear-gradient(180deg, #ffffff, #fdf5e6);
+}
+.c3 {
+  background: linear-gradient(180deg, #ffffff, #f0fff0);
+}
+.c4 {
+  background: linear-gradient(180deg, #ffffff, #fff9e6);
+}
+.c5 {
+  background: linear-gradient(180deg, #ffffff, #f0f7ff);
+}
+.c6 {
+  background: linear-gradient(180deg, #ffffff, #f5f0ff);
+}
+.c7 {
+  background: linear-gradient(180deg, #ffffff, #fff0f0);
+}
+.c8 {
+  background: linear-gradient(180deg, #ffffff, #f9f9f9);
+}
+
+/* 6. КНОПКИ */
+.btn,
+.btn2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 40px;
+  background-color: var(--accent-pink);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn2:hover {
+  background-color: #f7a8c4;
+  box-shadow: 0 10px 25px rgba(255, 193, 214, 0.5);
+  transform: scale(1.05);
+}
+
+/* 7. ДИПЛОМНА РОБОТА */
+.projects {
+  padding: 100px 8%;
+  background: white;
+  border-radius: 100px 100px 0 0; /*  заокруглення секції */
+  text-align: center;
+}
+
+.diplom-section {
+  display: flex !important;
+  gap: 50px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  max-width: 1100px !important;
+  margin: 50px auto !important;
+  padding: 0 5% !important;
+  width: 100%;
+}
+
+.diplom-text-card {
+  flex: 1;
+  text-align: left;
+  max-width: 500px;
+  padding: 40px !important;
+  align-items: flex-start !important;
+}
+
+.diplom-text-card h3 {
+  text-align: left !important;
+  font-size: 1.8rem !important;
+}
+
+.diplom-text-card p {
+  text-align: left !important;
+  color: #777 !important;
+}
+
+.diplom-img-card {
+  flex: 1;
+  max-width: 500px;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.diplom-img-card img {
+  width: 100%;
+  height: auto !important;
+  margin: 0 !important;
+  border-radius: 35px !important;
+}
+
+/* 8. ФУТЕР */
+.footer {
+  background: #956565;
+  padding: 50px 5% 40px;
+  text-align: center;
+  border-top: 1px solid #ffe4ed;
+}
+
+.footer p {
+  color: #fbfafa !important;
+  opacity: 0.8;
+  font-weight: 300;
+  margin-bottom: 5px; /* Відступ між рядками */
+}
+
+.gallery-container {
+  padding-bottom: 70px !important; /* Відстань до футера */
+  max-width: 1400px;
+  margin: 0 auto; /* Центруємо контейнер по центру */
+  padding: 0 8%; /* Створюємо поля (8% зліва і справа) */
+}
+
+.btn-back {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--accent-pink);
+  text-decoration: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 1px solid transparent;
+  transition: 0.3s;
+}
+
+.btn-back:hover {
+  border-bottom-color: var(--accent-pink);
+  letter-spacing: 4px;
+}
+
+/* Адаптація для мобільних */
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 50px;
+  }
+  .header-text h1 {
+    font-size: 3.5rem;
+  }
+  .diplom-section {
+    flex-direction: column;
+  }
+  .header-img {
+    margin-top: 50px;
+  }
+}
+
+/* Спеціальні стилі для сторінки галереї */
+.gallery-page {
+  padding: 40px 5%;
+  background-color: #ecd4d4ea;
+}
+
+.course-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  color: #555;
+  margin-top: 60px;
+  text-align: center;
+}
+
+/* Сітка галереї */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 40px 5;
+}
+
+/* Окремий предмет мистецтва */
+.art-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition);
+}
+
+/* Контейнер для фото (без обрізання) */
+.art-image-wrapper {
+  width: 100%;
+  background: #e7e1e1ec;
+  padding: 10px; /* Тонка біла кромка як у паспарту */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Дуже легка тінь */
+  border: 1px solid #f0f0f0ec;
+  line-height: 0;
+}
+
+.art-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* Ефект при наведенні */
+.art-item:hover .art-image-wrapper {
+  box-shadow: 0 10px 25px rgba(255, 193, 214, 0.2);
+  border-color: var(--accent-pink);
+}
+
+.art-item:hover img {
+  transform: scale(1.02); /* збільшення */
+}
+
+/* Підпис під картиною */
+.art-caption {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #888;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+.art-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.course-title {
+  text-align: center;
+  margin-top: 50px;
+  font-family: "Playfair Display", serif;
+}
+
+/* Адаптація для мобільних */
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* Основний стиль для обох кнопок */
+.btn,
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 40px;
+  background-color: var(--accent-pink); /* Ваш рожевий колір */
+  color: white !important; /* Текст завжди білий */
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: all 0.4s ease;
+  border: none;
+  cursor: pointer;
+}
+
+/* Ефекти при наведенні та натисканні */
+.btn:hover,
+.btn-back:hover {
+  background-color: #f7a8c4; /* Трохи світліший при наведенні */
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(255, 193, 214, 0.4);
+}
+
+.btn:active,
+.btn-back:active {
+  transform: scale(0.98);
+  background-color: var(--accent-pink);
+  color: white !important;
+}
+
+.btn-back:hover::before {
+  transform: translateX(-5px); /* Стрілочка відсувається вбік при наведенні */
+}
+
+/* Навігаційна панель з логотипом */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Центрує логотип і меню по вертикалі */
+  padding: 10px 5%; /* Менші відступи, щоб панель була тоншою */
+  background: rgba(255, 255, 255, 0.95); /* Світлий фон як на референсі */
+  backdrop-filter: blur(10px); /* Ефект скла */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Вирівнювання логотипу та пошуку */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Відступ між логотипом і пошуком */
+}
+
+/* Посилання навколо логотипу (щоб натискалося) */
+.logo-link {
+  display: flex;
+  line-height: 0;
+  text-decoration: none;
+}
+
+/* Налаштування самого зображення логотипу */
+.logo-img {
+  height: auto; /* Зберігає пропорції */
+  max-height: 70px; /* Обмежує висоту, щоб він був акуратним */
+  width: auto;
+  transition: transform 0.3s ease; /* М'яка анімація */
+}
+
+/* Ефект при наведенні на логотип */
+.logo-img:hover {
+  transform: scale(1.05); /* Легке збільшення */
+}
