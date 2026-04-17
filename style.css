@@ -103,7 +103,7 @@ body {
 }
 
 .header-img img {
-  padding-left:15%;
+  padding-left:40px;
   max-width: 400px;
   border-radius: 40% 60% 70% 30% / 40% 50% 60% 70%; /* Органічна м'яка форма */
   border: 10px solid white;
