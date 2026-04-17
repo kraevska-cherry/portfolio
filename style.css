@@ -109,8 +109,9 @@ body {
   border: 10px solid white;
   box-shadow: 0 20px 50px rgba(255, 193, 214, 0.3);
   transition: var(--transition);
-  margin-left: 60px 8%;
-  margin-left: auto;
+  displey: block;
+  margin-left: 100px;
+  margin-right: 40px;
 }
 
 .header-img img:hover {
